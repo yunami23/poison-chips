@@ -1,0 +1,11 @@
+{
+  "name": "poison-chips-duel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Two-player real-time poison chips browser game, no dependencies",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

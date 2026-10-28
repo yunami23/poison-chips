@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171521">
+  <meta name="description" content="一片有毒！双人在线薯片心理战。偷偷下毒，轮流开吃，谁先踩雷谁输。">
+  <title>这片有毒！｜双人薯片心理战</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="ambient ambient-one" aria-hidden="true"></div>
+<div class="ambient ambient-two" aria-hidden="true"></div>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="返回首页">
+      <span class="logo-symbol" aria-hidden="true">✳</span>
+      <span>POISON<span class="wordmark-dot">.</span>CHIPS</span>
+    </a>
+    <span class="header-right"><span class="live-light"></span> 2人实时联机 <span class="hide-mobile">· 不用下载</span></span>
+  </header>
+
+  <main>
+    <section id="homeScreen" class="home-screen">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-star">✺</span> THE BAD SNACK CLUB <span class="eyebrow-star">✺</span></div>
+        <h1>这一片<br><em>有毒！</em><span class="tiny-skull" aria-hidden="true">☠</span></h1>
+        <p class="hero-lead">友情的小船，<br>说翻就翻。<span class="wink">↗</span></p>
+        <p class="hero-body">两个人，二十片薯片。各自偷偷选一片下毒，再轮流拿走薯片。谁先拿到对方的毒药，谁就输了。</p>
+        <div class="mini-rules">
+          <span><b>01</b> 偷偷埋雷</span>
+          <span class="rule-divider">→</span>
+          <span><b>02</b> 轮流拿走</span>
+          <span class="rule-divider">→</span>
+          <span><b>03</b> 踩雷认输</span>
+        </div>
+        <p class="hero-footnote">✦ 三局两胜 · 选同一片也有效 · 适合异地好友</p>
+      </div>
+      <div class="entry-side">
+        <div class="poster-art" aria-hidden="true">
+          <span class="poster-stamp">100%<br>BAD LUCK</span>
+          <div class="poster-big-chip"><span class="poster-face">× ◡ ×</span><span class="poster-dots">•••</span></div>
+          <span class="poster-scribble">CRUNCH!</span>
+          <span class="poster-star poster-star-a">✷</span>
+          <span class="poster-star poster-star-b">✳</span>
+          <span class="poster-corner">DON'T TRUST<br>YOUR FRIEND.</span>
+        </div>
+        <form id="entryForm" class="entry-card" autocomplete="off">
+          <div class="entry-heading"><span>🎟</span><div><h2>开一桌？</h2><p>把朋友拉来一起玩</p></div></div>
+          <label for="nickname">你的游戏昵称</label>
+          <input id="nickname" name="nickname" maxlength="12" placeholder="比如：薯片杀手" required>
+          <button class="btn btn-primary btn-full" id="createBtn" type="button">我来创建房间 <span>↗</span></button>
+          <div class="or-divider"><span>或者加入朋友的房间</span></div>
+          <div class="join-row">
+            <input id="roomInput" maxlength="6" spellcheck="false" placeholder="6位房间码" aria-label="六位房间码">
+            <button class="btn btn-dark" id="joinBtn" type="button">加入 <span>→</span></button>
+          </div>
+          <p id="entryHint" class="entry-hint">完全免费 · 无需注册</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="game-screen hidden" aria-label="游戏房间">
+      <div class="game-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-star">✺</span> THE BAD SNACK CLUB</div>
+          <h1 class="game-title">谁下的<span>毒？</span></h1>
+        </div>
+        <div class="room-actions">
+          <div class="room-code">ROOM <strong id="roomCode">------</strong></div>
+          <button id="copyInvite" class="small-btn" type="button">复制邀请链接 ↗</button>
+        </div>
+      </div>
+      <div class="scoreboard" id="scoreboard" aria-label="玩家积分"></div>
+      <div class="round-strip">
+        <span class="round-indicator">ROUND <b id="roundLabel">—</b> <span>/ 03</span></span>
+        <span class="strip-status" id="statusDot"><i></i><span id="statusLabel">等待玩家</span></span>
+      </div>
+      <div class="game-layout">
+        <div class="table-side">
+          <div class="table-head">
+            <span class="table-overline">A LITTLE BIT OF CHAOS</span>
+            <span class="table-count">还剩 <b id="remainingCount">20</b> 片</span>
+          </div>
+          <div class="table-top" id="chipBoard" role="group" aria-label="薯片桌面"></div>
+          <div class="table-foot"><span>☠ <span id="boardLegend">毒药只有你自己知道</span></span><span>CHOOSE WISELY ✳</span></div>
+        </div>
+        <aside class="control-panel" aria-live="polite">
+          <div class="panel-eyebrow"><span class="panel-spark">✦</span> LIVE GAME</div>
+          <div class="phase-count" id="phaseCount">01 <span>/ 03</span></div>
+          <h2 id="phaseTitle">等朋友入座</h2>
+          <p id="phaseDesc">先把邀请链接发给你的朋友吧，两人到齐就能开始。</p>
+          <div class="info-pills" id="phasePills"></div>
+          <div id="roundResult" class="round-result hidden"></div>
+          <button id="actionButton" type="button" class="btn btn-primary btn-full control-action" disabled>等待朋友加入…</button>
+          <div id="actionNote" class="action-note">一场真正的友情考验</div>
+          <div class="mini-feed-title">现场播报 <span>↙</span></div>
+          <div id="activityFeed" class="activity-feed"><p>静待坏事发生……</p></div>
+        </aside>
+      </div>
+      <div class="game-bottom"><span>这不是猜运气，是猜你朋友有多坏。</span><span>ONE IS POISON ✳ ONE IS POISON ✳</span></div>
+    </section>
+  </main>
+  <footer>MADE FOR BAD FRIENDS <span>♡</span> GOOD TIMES ONLY <span>© 2026</span></footer>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="/app.js" defer></script>
+</body>
+</html>
